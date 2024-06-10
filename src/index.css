@@ -1,6 +1,6 @@
-* {
+/* * {
     background-color: rgb(255, 244, 254)
-}
+} */
 
 .app {
     display: flex;
@@ -29,6 +29,8 @@
     background-color: rgb(54, 126, 219);
     color: rgb(255, 255, 255);
     padding: 10px;
+    margin: 6px;
+    margin-bottom: 19px;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -64,6 +66,8 @@
     background-color: rgb(204, 145, 253);
     color: rgb(0, 0, 0);
     padding: 10px;
+    margin: 10px;
+    margin-bottom: 15px;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
 }
 

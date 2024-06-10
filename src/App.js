@@ -20,11 +20,20 @@ const App = () => {
   ]);
 
   // const [current, setCurrent] = useState(null);
-  const [current, setCurrent] = useState([]);
+  const [current, setCurrent] = useState(createPlayer('p7', 'Player 7', 2));
   const [isCurrentPair, setIsCurrentPair] = useState(false);
 
   const randomizeTeam = () => {
-    // Logic to randomize current pair/player into a team
+    if (current) {
+      setTeams(prevTeams => {
+        const updatedTeams = [...prevTeams];
+        updatedTeams[0].players.push(current); // Team 1 is at index 0
+        return updatedTeams;
+      });
+
+      // Reset current to null or pick the next player
+      setCurrent(null);
+    }
   };
 
   return (
