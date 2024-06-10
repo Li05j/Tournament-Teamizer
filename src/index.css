@@ -50,6 +50,7 @@
 
 .list-panel {
     text-align: center;
+    font-size: 1.2em;
     margin: 20px;
 
     background-color: #ffc8f3;
@@ -74,7 +75,10 @@
 
 .randomizer-panel {
     margin-top: auto;
-    border: 1px solid #ff8989;
+    font-size: 2em;
+    /* border: 1px solid #ff8989; */
     margin: 10px;
-    padding: 10px;
+    margin-top: 30px;
+    padding: 20px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
 }

@@ -64,7 +64,8 @@ const App = () => {
     team.players.forEach(player => tierCounts[player.tier]++);
     players.forEach(player => tierCounts[player.tier]++);
 
-    return tierCounts[1] <= 2 && tierCounts[2] <= 2 && tierCounts[3] <= 2;
+    // return tierCounts[1] <= 2 && tierCounts[2] <= 2 && tierCounts[3] <= 2;
+    return false;
   };
 
   const initializeNext = () => {

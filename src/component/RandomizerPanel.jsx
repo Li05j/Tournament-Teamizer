@@ -12,12 +12,12 @@ const RandomizerPanel = ({ current, onRandomize, isPair }) => (
                 ) : (
                     <div>{current.name} (T{current.tier})</div>
                 )}
-                <button onClick={onRandomize}>Randomize Team!</button>
+                <button onClick={onRandomize} style={{ fontSize: '20px', marginTop: '20px' }}>Randomize Team!</button>
             </>
         ) : (
             <h3>No players left.</h3>
         )}
-    </div>
+    </div >
 );
 
 export default RandomizerPanel;
