@@ -7,11 +7,10 @@ const RandomizerPanel = ({ current, onRandomize, isPair }) => (
                 <h3>Current:</h3>
                 {isPair ? (
                     <>
-                        <div>{current[0].name} (Tier {current[0].tier})</div>
-                        <div>{current[1].name} (Tier {current[1].tier})</div>
+                        <div>{current.players[0].name} (Tier {current.players[0].tier}), {current.players[1].name} (T{current.players[1].tier})</div>
                     </>
                 ) : (
-                    <div>{current.name} (Tier {current.tier})</div>
+                    <div>{current.name} (T{current.tier})</div>
                 )}
                 <button onClick={onRandomize}>Randomize Team!</button>
             </>
