@@ -39,7 +39,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 10px;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .lists {
@@ -53,8 +53,8 @@
 
     background-color: #ffc8f3;
 
-    height: 200px;
-    width: 200px;
+    min-height: 200px;
+    min-width: 200px;
     overflow-y: auto;
 
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);

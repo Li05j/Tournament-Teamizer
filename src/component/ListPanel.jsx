@@ -8,11 +8,10 @@ const ListPanel = ({ title, items, isPair }) => (
             <div key={item.id}>
                 {isPair ? (
                     <>
-                        <div>{item.players[0].name} (Tier {item.players[0].tier})</div>
-                        <div>{item.players[1].name} (Tier {item.players[1].tier})</div>
+                        <div>{item.players[0].name} (T{item.players[0].tier}), {item.players[1].name} (T{item.players[1].tier})</div>
                     </>
                 ) : (
-                    <div>{item.name} (Tier {item.tier})</div>
+                    <div>{item.name} (T{item.tier})</div>
                 )}
             </div>
         ))}
