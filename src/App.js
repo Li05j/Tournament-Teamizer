@@ -52,13 +52,12 @@ const App = () => {
   ]);
 
   // const [current, setCurrent] = useState(null);
-  const [current, setCurrent] = useState(createPlayer(DUMMY_PLAYER, 'Dummy, click Randomize Team! button to start.', 'T'));
+  const [current, setCurrent] = useState(null);
   const [isCurrentPair, setIsCurrentPair] = useState(false);
 
-  // useEffect(() => {
-  //   initializeNext();
-  //   console.log("???")
-  // }, []); // Run only once on mount
+  useEffect(() => {
+    initializeNext();
+  }, []); // Run only once on mount
 
   const initializeNext = () => {
     if (pairs.length > 0) {
