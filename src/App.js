@@ -52,12 +52,20 @@ const App = () => {
   ]);
 
   // const [current, setCurrent] = useState(null);
-  const [current, setCurrent] = useState(null);
+  const [current, setCurrent] = useState(createPlayer(DUMMY_PLAYER, 'Click Randomize Team! button to start.', 'T'),);
   const [isCurrentPair, setIsCurrentPair] = useState(false);
 
-  useEffect(() => {
-    initializeNext();
-  }, []); // Run only once on mount
+  // useEffect(() => {
+  //   initializeNext();
+  // }, []); // Run only once on mount
+
+  const isTeamCompatible = (team, players) => {
+    const tierCounts = { 1: 0, 2: 0, 3: 0 };
+    team.players.forEach(player => tierCounts[player.tier]++);
+    players.forEach(player => tierCounts[player.tier]++);
+
+    return tierCounts[1] <= 2 && tierCounts[2] <= 2 && tierCounts[3] <= 2;
+  };
 
   const initializeNext = () => {
     if (pairs.length > 0) {
@@ -74,37 +82,57 @@ const App = () => {
   };
 
   const randomizeTeam = () => {
+    if (!current) return;
+
     if (current.id === DUMMY_PLAYER) {
       initializeNext();
       return;
     }
 
-    if (current) {
-      let updatedTeams;
+    let targetTeam = null;
+
+    if (Array.isArray(current.players)) {
+      // Handle pair
+      const compatibleTeams = teams.filter(team => isTeamCompatible(team, current.players));
+      if (compatibleTeams.length > 0) {
+        targetTeam = compatibleTeams[Math.floor(Math.random() * compatibleTeams.length)];
+      } else {
+        setFreeAgents(prevFreeAgents => [...prevFreeAgents, ...current.players]);
+      }
+    } else {
+      // Handle single player
+      const compatibleTeams = teams.filter(team => isTeamCompatible(team, [current]));
+      if (compatibleTeams.length > 0) {
+        targetTeam = compatibleTeams[Math.floor(Math.random() * compatibleTeams.length)];
+      } else {
+        // setFreeAgents(prevFreeAgents => [...prevFreeAgents, current]);
+      }
+    }
+
+    if (targetTeam) {
       setTeams(prevTeams => {
         const updatedTeams = [...prevTeams];
-        const targetTeam = updatedTeams[0];
+        const teamIndex = updatedTeams.findIndex(team => team.id === targetTeam.id);
 
         if (Array.isArray(current.players)) {
           current.players.forEach(player => {
             if (!targetTeam.players.some(p => p.id === player.id)) {
-              console.log(`Adding player ${player.name} to Team 1`);
               targetTeam.players.push(player);
             }
           });
-        } else if (!targetTeam.players.some(p => p.id === current.id)) {
-          console.log(`Adding player ${current.name} to Team 1`);
-          targetTeam.players.push(current);
+        } else {
+          if (!updatedTeams[teamIndex].players.some(p => p.id === current.id)) {
+            updatedTeams[teamIndex].players.push(current);
+          }
         }
 
         return updatedTeams;
       });
-
-      // Call initializeNext after updating state
-      initializeNext();
     }
-  };
 
+    // Initialize next player or pair
+    initializeNext();
+  };
 
   return (
     <div className="app">
