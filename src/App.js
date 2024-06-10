@@ -59,6 +59,10 @@ const App = () => {
   //   initializeNext();
   // }, []); // Run only once on mount
 
+  const sortPlayersByTier = (players) => {
+    return players.sort((a, b) => a.tier - b.tier);
+  };
+
   const isTeamCompatible = (team, players) => {
     const tierCounts = { 1: 0, 2: 0, 3: 0 };
     team.players.forEach(player => tierCounts[player.tier]++);
@@ -118,7 +122,7 @@ const App = () => {
         if (Array.isArray(current.players)) {
           current.players.forEach(player => {
             if (!targetTeam.players.some(p => p.id === player.id)) {
-              targetTeam.players.push(player);
+              updatedTeams[teamIndex].players.push(player);
             }
           });
         } else {
@@ -126,6 +130,9 @@ const App = () => {
             updatedTeams[teamIndex].players.push(current);
           }
         }
+
+        // Sort players by tier after insertion
+        updatedTeams[teamIndex].players = sortPlayersByTier(updatedTeams[teamIndex].players);
 
         return updatedTeams;
       });
