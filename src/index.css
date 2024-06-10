@@ -1,0 +1,34 @@
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.teams {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    /* Adjust as needed */
+}
+
+.team-panel {
+    border: 1px solid #1900ff;
+    /* margin: 10px;
+    padding: 10px;
+    min-width: 200px; */
+    min-height: 400px;
+    background-color: aqua;
+}
+
+.lists {
+    display: flex;
+}
+
+.list-panel {
+    border: 1px solid #ff8989;
+    margin: 10px;
+    padding: 10px;
+}
+
+.randomizer-panel {
+    margin-top: auto;
+}
