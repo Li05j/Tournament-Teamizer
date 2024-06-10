@@ -14,6 +14,7 @@
 }
 
 .team-panel {
+    text-align: center;
     border: 1px solid #1900ff;
     min-height: 300px;
     background-color: aqua;
