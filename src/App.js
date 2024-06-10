@@ -34,11 +34,13 @@ const App = () => {
           <TeamPanel key={team.id} team={team} />
         ))}
       </div>
-      <div className="lists">
-        <ListPanel title="Pairs" items={pairs} isPair={true} />
-        <ListPanel title="Free Agents" items={freeAgents} isPair={false} />
+      <div className="players-container">
+        <RandomizerPanel current={current} onRandomize={randomizeTeam} />
+        <div className="lists">
+          <ListPanel title="Pairs" items={pairs} isPair={true} />
+          <ListPanel title="Free Agents" items={freeAgents} />
+        </div>
       </div>
-      <RandomizerPanel current={current} onRandomize={randomizeTeam} isPair={isCurrentPair} />
     </div>
   );
 };
