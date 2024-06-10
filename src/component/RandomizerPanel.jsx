@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RandomizerPanel = ({ current, onRandomize, isPair }) => (
+const RandomizerPanel = ({ current, onRandomize, onShufflePlayers, isPair }) => (
     <div className="randomizer-panel">
         {current ? (
             <>
@@ -12,7 +12,8 @@ const RandomizerPanel = ({ current, onRandomize, isPair }) => (
                 ) : (
                     <div>{current.name} (T{current.tier})</div>
                 )}
-                <button onClick={onRandomize} style={{ fontSize: '20px', marginTop: '20px' }}>Randomize Team!</button>
+                <button onClick={onRandomize} style={{ fontSize: '20px', margin: '20px' }}>Randomize Team!</button>
+                <button onClick={onShufflePlayers} style={{ fontSize: '20px', margin: '20px' }}>Shuffle Players</button>
             </>
         ) : (
             <h3>No players left.</h3>

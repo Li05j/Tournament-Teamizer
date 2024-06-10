@@ -59,6 +59,19 @@ const App = () => {
   //   initializeNext();
   // }, []); // Run only once on mount
 
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  const shufflePlayers = () => {
+    setPairs(prevPairs => shuffleArray([...prevPairs]));
+    setFreeAgents(prevFreeAgents => shuffleArray([...prevFreeAgents]));
+  };
+
   const sortPlayersByTier = (players) => {
     return players.sort((a, b) => a.tier - b.tier);
   };
@@ -150,7 +163,7 @@ const App = () => {
         ))}
       </div>
       <div className="players-container">
-        <RandomizerPanel current={current} onRandomize={randomizeTeam} isPair={isCurrentPair} />
+        <RandomizerPanel current={current} onRandomize={randomizeTeam} onShufflePlayers={shufflePlayers} isPair={isCurrentPair} />
         <div className="lists">
           <ListPanel title="Pairs" items={pairs} isPair={true} />
           <ListPanel title="Free Agents" items={freeAgents} />
