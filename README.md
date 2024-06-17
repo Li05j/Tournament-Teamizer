@@ -2,7 +2,7 @@
 
 ## Overview
 
-**TeamShuffler** is a React-based web application designed to enhance the excitement of random team assignments for 3v3 tournaments. With a visual interface, participants can watch as they are randomly assigned to one of the eight teams, building anticipation and hype.
+**Tournament Teamizer** is a React-based web application designed to enhance the excitement of random team assignments for 3v3 tournaments. With a visual interface, participants can watch as they are randomly assigned to one of the eight teams, building anticipation and hype.
 
 The goal is to make this a more generalized team building app for random/draft tournaments, which may want to stream their team buildings before the actual tournament.
 
