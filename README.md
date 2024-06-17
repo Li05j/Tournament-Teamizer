@@ -1,4 +1,4 @@
-# TeamShuffler
+# Tournament Teamizer
 
 ## Overview
 
